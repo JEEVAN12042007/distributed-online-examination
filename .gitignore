@@ -1,0 +1,35 @@
+.metadata/
+
+# Java
+*.class
+
+# Maven
+target/
+
+# Eclipse / Spring Tools
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.env
+
+# Local configuration
+application-local.properties
+application-secret.properties
+eureka-server/
