@@ -48,10 +48,18 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Create service databases
+        run: |
+          PGPASSWORD=postgres psql -h localhost -U postgres -d postgres -c "CREATE DATABASE exam_db;"
+          PGPASSWORD=postgres psql -h localhost -U postgres -d postgres -c "CREATE DATABASE submission_db;"
+          PGPASSWORD=postgres psql -h localhost -U postgres -d postgres -c "CREATE DATABASE evaluation_db;"
+
       - name: Build and test
         working-directory: ${{ matrix.service }}
         env:
           DB_PASSWORD: postgres
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: postgres
         run: |
           chmod +x mvnw
           ./mvnw -B clean verify
